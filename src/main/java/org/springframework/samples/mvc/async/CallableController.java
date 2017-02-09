@@ -22,6 +22,7 @@ public class CallableController {
 			@Override
 			public String call() throws Exception {
 				Thread.sleep(2000);
+				System.out.println("Deo");
 				return "Callable result";
 			}
 		};
