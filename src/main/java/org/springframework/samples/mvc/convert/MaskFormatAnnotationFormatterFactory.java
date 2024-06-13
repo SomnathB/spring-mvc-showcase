@@ -26,10 +26,23 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 		return new MaskFormatter(annotation.value());
 	}
 	
+	/**
+	 * A formatter that applies a mask to format and parse strings.
+	 * This formatter uses the javax.swing.text.MaskFormatter class to apply the mask.
+	 */
+	/**
+	 * A formatter that applies a mask to format and parse strings.
+	 */
 	private static class MaskFormatter implements Formatter<String> {
 
 		private javax.swing.text.MaskFormatter delegate;
 
+		/**
+		 * Constructs a new MaskFormatter with the specified mask.
+		 *
+		 * @param mask the mask to be applied
+		 * @throws IllegalStateException if the mask could not be parsed
+		 */
 		public MaskFormatter(String mask) {
 			try {
 				this.delegate = new javax.swing.text.MaskFormatter(mask);
@@ -39,6 +52,14 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 			}
 		}
 
+		/**
+		 * Formats the specified object into a string representation.
+		 *
+		 * @param object the object to be formatted
+		 * @param locale the locale to be used for formatting
+		 * @return the formatted string
+		 * @throws IllegalArgumentException if unable to print using the mask
+		 */
 		public String print(String object, Locale locale) {
 			try {
 				return delegate.valueToString(object);
@@ -46,7 +67,15 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 				throw new IllegalArgumentException("Unable to print using mask " + delegate.getMask(), e);
 			}
 		}
-
+s
+		/**
+		 * Parses the specified text into an object.
+		 *
+		 * @param text the text to be parsed
+		 * @param locale the locale to be used for parsing
+		 * @return the parsed object
+		 * @throws ParseException if the text cannot be parsed
+		 */
 		public String parse(String text, Locale locale) throws ParseException {
 			return (String) delegate.stringToValue(text);
 		}

@@ -16,3 +16,5 @@ public class AjaxUtils {
 	private AjaxUtils() {}
 
 }
+//create a new method in the AjaxUtils class that checks for an AJAX request that is also a file upload request.
+
