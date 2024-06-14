@@ -58,7 +58,6 @@ public class MaskFormatAnnotationFormatterFactory implements AnnotationFormatter
 		 * @param object the object to be formatted
 		 * @param locale the locale to be used for formatting
 		 * @return the formatted string
-		 * @throws IllegalArgumentException if unable to print using the mask
 		 */
 		public String print(String object, Locale locale) {
 			try {
